@@ -10,7 +10,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="google_cloud.json"
 client=vision.ImageAnnotatorClient()
 
 #paste your bot token here
-token="578032939:AAGhpa95-6k9q63EuVfmZHUUk0O7Ab3b2EY"
+token="YOUR TOKEN HERE"
 
 bot=telebot.AsyncTeleBot(token)
 
@@ -24,7 +24,7 @@ def photo(msg):
     try:
       text=client.annotate_image({
   "image": {"content":img},
-  "features": [{"type": vision.enums.Feature.Type.TEXT_DETECTION}],
+  "features": [{"type": vision.enums.Feature.Type.DOCUMENT_TEXT_DETECTION}],
   "image_context":{"language_hints":["en"]}
 }).full_text_annotation.text
     except Exception:
